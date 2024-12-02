@@ -1,0 +1,29 @@
+{% extends "portfolio/base.html" %} {% block content %}
+<div class="container mt-3">
+    <div class="card bg-primary text-white">
+    <div class="card-body">
+  <h1>Diary's Days</h1>
+ </div>
+  </div>
+  <br>
+  <div class="card bg-warning text-white">
+    <div class="card-body">
+    <h2>Nick has written in the diary {{fields.count}} day{{fields.count|pluralize }}</h2>
+  </div>
+  </div><br> <br> <br>
+      {% for field in fields %}
+      <div class="card bg-secondary text-white">
+        <div class="card-body">
+          <h2>
+            <a href="{% url 'field:detail' field.id %}">{{field.title}}</a>
+          </h2>
+          <h3>{{field.description|safe|truncatewords:50 }}</h3><br>
+          <h3>{{field.date|date:'d-M-Y'}}</h3>
+        </div>
+      </div>
+      <br /><br />
+      {% endfor %}
+    </div>
+    {% endblock %}
+  </div>
+</div>

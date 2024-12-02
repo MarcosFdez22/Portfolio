@@ -1,0 +1,30 @@
+{% extends "portfolio/base.html" %} {% block content %}
+<div class="container mt-3">
+  <h1 style="text-align: center">Welcome to my Diary</h1>
+  {% load static %}
+  <img
+    src="{% static 'portfolio/diary.png' %}"
+    class="d-block mx-auto"
+    style="height: 400px; margin-top: 100px"
+  /><br />
+  {% for project in projects %}
+  <h2>{{ project.title }}</h2>
+  <ul class="list-group">
+    <li class="list-group-item">{{ project.description }}</li>
+    <li class="list-group-item">
+      <img
+        src="{{ project.image.url }}"
+        alt="{{ project.description }}"
+        height="80"
+        width="80"
+      />
+    </li>
+    {% if project.url %}
+    <li class="list-group-item">
+      <a href="{{ project.url }}">Link</a>
+    </li>
+    {% endif %}
+  </ul>
+  {% endfor %}
+</div>
+{% endblock %}
